@@ -13,7 +13,9 @@ import android.widget.TextView;
 
 import mx.com.emiliano.checktest.R;
 import mx.com.emiliano.checktest.data.SubsidiaryViewModel;
+import mx.com.emiliano.checktest.retrofit.response.DetailSubsidiary;
 import mx.com.emiliano.checktest.retrofit.response.Subsidiary;
+import mx.com.emiliano.checktest.ui.dialogs.DetailsSubsidiaryDialog;
 
 import java.util.List;
 
@@ -37,7 +39,7 @@ public class MySubsidiaryRecyclerViewAdapter extends RecyclerView.Adapter<MySubs
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         if(mValues != null){
             holder.mItem = mValues.get(position);
             holder.tvTitulo.setText(mValues.get(position).getName());
@@ -49,6 +51,7 @@ public class MySubsidiaryRecyclerViewAdapter extends RecyclerView.Adapter<MySubs
             @Override
             public void onClick(View v) {
                 //TODO: open Detail
+                DetailSubsidiary detail = subsidiaryViewModel.getDetailSubsidiary(mValues.get(position).getSubsidiaryKey());
             }
         });
     }

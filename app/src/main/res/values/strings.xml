@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">CheckTest</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Descripción">d_desciption</string>
+    <string name="dialog_subsidiary_description_titulo">Descripción</string>
+    <string name="dialog_name">Nombre</string>
+    <string name="dialog_subsidiary_category">Categoría</string>
+    <string name="dialog_subsidiary_btn_aceptar">Aceptar</string>
+    <string name="dialog_tittle_subsidiary">Detalle de la sucursal</string>
 </resources>
