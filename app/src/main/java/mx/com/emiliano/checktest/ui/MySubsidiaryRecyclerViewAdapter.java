@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,7 +52,13 @@ public class MySubsidiaryRecyclerViewAdapter extends RecyclerView.Adapter<MySubs
             @Override
             public void onClick(View v) {
                 //TODO: open Detail
-                DetailSubsidiary detail = subsidiaryViewModel.getDetailSubsidiary(mValues.get(position).getSubsidiaryKey());
+                final DetailSubsidiary detail = subsidiaryViewModel.getDetailSubsidiary(mValues.get(position).getSubsidiaryKey());
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    public void run() {
+                        subsidiaryViewModel.openDetailDialog(ctx, detail);
+                    }
+                }, 10000);
             }
         });
     }

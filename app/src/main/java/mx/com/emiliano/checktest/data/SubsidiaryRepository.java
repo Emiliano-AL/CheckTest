@@ -13,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import org.reactivestreams.Subscriber;
+
 import java.util.List;
 
 import mx.com.emiliano.checktest.retrofit.ISubsidiaryService;
@@ -34,15 +36,13 @@ public class SubsidiaryRepository {
         if (detailSubsiduary == null)
             detailSubsiduary = new MutableLiveData<>();
 
+
         Call<DetailSubsidiary> call = service.getSubsidiaryDetail(keySubsidiary);
         call.enqueue(new Callback<DetailSubsidiary>() {
             @Override
             public void onResponse(Call<DetailSubsidiary> call, Response<DetailSubsidiary> response) {
                 if (response.isSuccessful()) {
                     detailSubsiduary.setValue(response.body());
-                    DetailsSubsidiaryDialog dialog = DetailsSubsidiaryDialog.newInstance(response.body());
-//                    MyApp app = MyApp.getInstance();
-//                    dialog.show(((AppCompatActivity) app.getContext()).getSupportFragmentManager(), "DetailsSubsidiaryDialog");
                 } else {
                     Log.d("Repo", "Error en la solicitud");
                 }
